@@ -1,0 +1,11 @@
+Breakpoint Category,Likely Root Cause,Downstream Impact,Operational Fix,Metric To Track
+Missing Handoff,No defined ownership during transition,Delayed follow up patient confusion and rework,Create closed loop handoff checklist,Handoff completion rate
+Duplicated Entry,Systems do not communicate cleanly,Error risk staff time loss and inconsistent records,Standardize fields and reduce duplicate manual entry,Duplicate entry rate
+Undocumented Care,Missing specificity in clinical documentation,Coding gaps audit risk and quality score weakness,Use documentation specificity checklist,Documentation completion rate
+Delayed Approval,No authorization aging escalation trigger,Patient delay revenue delay and avoidable denial,Create authorization aging dashboard and escalation rules,Authorization aging days
+Manual Escalation,Urgent issues depend on memory,Inconsistent response missed deadlines and safety risk,Create standardized escalation pathway,Escalation response time
+Invisible Workload,Leadership tracks output but not capacity,Burnout bottlenecks and delayed work,Add workload and capacity dashboard,Workload per staff member
+Eligibility Gap,Insurance not verified early enough,Claim rejection patient billing confusion and rework,Verify eligibility before service,Eligibility verification accuracy
+Documentation Specificity Gap,Clinical record does not support service level,Medical necessity risk coding weakness and appeal delays,Create documentation quality review process,Specificity completion rate
+Prior Authorization Delay,No clear owner for aging authorization queue,Delayed care delayed reimbursement and rescheduled services,Assign owner and escalation trigger by aging threshold,Average authorization aging days
+Operational Visibility Gap,Leadership only sees lagging indicators,Late intervention repeated failure and avoidable firefighting,Create upstream KPI dashboard,Upstream defect rate
