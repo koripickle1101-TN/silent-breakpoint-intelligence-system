@@ -84,6 +84,7 @@ main {
   font-weight: 900;
   background: var(--white);
   box-shadow: 0 12px 28px rgba(255, 130, 0, 0.08);
+  flex: 0 0 auto;
 }
 
 .brand-strip p,
@@ -580,6 +581,11 @@ footer p {
     grid-template-columns: 1fr;
   }
 
+  .section-header {
+    gap: 28px;
+    margin-bottom: 34px;
+  }
+
   .six-grid,
   .four-grid,
   .metric-grid,
@@ -592,6 +598,7 @@ footer p {
   .shell-card {
     border-radius: 26px;
     padding: 28px 22px;
+    margin-bottom: 18px;
   }
 
   .shell-card:before {
@@ -603,12 +610,42 @@ footer p {
     align-items: flex-start;
   }
 
+  .brand-dot {
+    width: 52px;
+    height: 52px;
+  }
+
+  .brand-strip p,
+  .dashboard-label,
+  .eyebrow,
+  .section-kicker,
+  .card-label {
+    letter-spacing: 0.18em;
+    font-size: 0.7rem;
+  }
+
   h1 {
-    font-size: clamp(3.2rem, 18vw, 5.2rem);
+    font-size: clamp(3.1rem, 15vw, 4.65rem);
+    letter-spacing: -0.06em;
   }
 
   h2 {
-    font-size: clamp(2rem, 11vw, 3.2rem);
+    font-size: clamp(2.1rem, 8.6vw, 3.05rem);
+    letter-spacing: -0.055em;
+  }
+
+  .signature-card h2 {
+    font-size: clamp(2rem, 8.5vw, 3rem);
+  }
+
+  .subtitle,
+  .signature-card p:last-child,
+  .statement-section p,
+  .score-section p,
+  .case-section p,
+  .positioning-section p,
+  .cta-section p {
+    font-size: 1rem;
   }
 
   .hero-actions {
@@ -617,6 +654,17 @@ footer p {
 
   .button {
     width: 100%;
+  }
+
+  .card,
+  .step,
+  .metric-grid article,
+  .case-grid article,
+  .download-card,
+  .calculator-controls,
+  .calculator-result,
+  .signature-card {
+    border-radius: 24px;
   }
 
   .calculator-controls label {
@@ -634,5 +682,38 @@ footer p {
   .footer-mark,
   .created-line {
     text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    width: min(100% - 18px, 1180px);
+  }
+
+  .shell-card {
+    padding: 26px 20px;
+  }
+
+  h1 {
+    font-size: clamp(3rem, 14vw, 4.25rem);
+  }
+
+  h2 {
+    font-size: clamp(2rem, 8vw, 2.75rem);
+  }
+
+  .dashboard-section h2,
+  .calculator-section h2,
+  .framework-section h2,
+  .map-section h2,
+  .statement-section h2 {
+    font-size: clamp(2rem, 7.5vw, 2.6rem);
+  }
+
+  .card,
+  .metric-grid article,
+  .case-grid article,
+  .download-card {
+    min-height: auto;
   }
 }
