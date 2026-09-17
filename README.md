@@ -1,114 +1,149 @@
-# SBI — Silent Breakpoint Intelligence
+# SBI — Silent Breakpoint Intelligence™
 
-I built SBI as a student-developed healthcare operations project around a question I keep coming back to: **where did the workflow first lose control before the downstream problem became obvious?**
-
-As I work toward my Bachelor's of Science degree in Healthcare Administration at the University of Phoenix, I am learning that many healthcare problems become visible late. A denial may show up in billing. A delayed authorization may show up when a service has to be rescheduled. A documentation gap may show up when someone downstream has to stop and investigate. Staff may experience repeated rework while the patient experiences another call, another delay, or another explanation they were not expecting.
-
-SBI gives me a way to practice looking upstream instead of treating the final visible problem as the whole story.
-
-## Why I Built SBI
-
-I do not have formal healthcare operations employment experience yet, so I use simulated projects to turn coursework and independent study into visible practice.
-
-With SBI, I wanted to study the space between **the first control loss** and **the point where the consequences finally become visible**.
-
-That means asking questions such as:
-
-- Did inaccurate information enter during intake?
-- Was documentation incomplete when the next team needed it?
-- Did an authorization sit without clear ownership?
-- Did a handoff happen without a closed loop?
-- Did staff create a manual workaround that hid the underlying problem?
-- Did leadership see the issue only after it reached billing, staffing, quality, or the patient?
-
-The core question is:
+I built SBI as a **student-developed, simulated, no-PHI healthcare operations portfolio project** around a question I keep coming back to:
 
 > **Where did the workflow first lose control?**
 
+As I work toward my Bachelor's of Science degree in Healthcare Administration at the University of Phoenix, I am building a patient-to-professional foundation in healthcare operations. I do not have formal healthcare operations employment experience yet. SBI is one way I turn coursework, independent study, and patient-side observations into structured practice without presenting student work as professional healthcare experience.
+
+## Why I Built SBI
+
+From the patient side, the visible problem often appears late.
+
+A person may experience another phone call, a delayed next step, a rescheduled service, a request to resend information, billing confusion, or uncertainty about what happens next. Internally, the earlier workflow condition may involve intake information, documentation readiness, prior-authorization follow-up, exception ownership, a handoff, or a recurring workaround.
+
+SBI helps me practice separating those two views:
+
+**What became visible downstream?**
+
+and
+
+**What earlier workflow condition should be investigated rather than assumed?**
+
+The project is not designed to prove causation. It is designed to help me practice tracing a workflow backward, identifying where control may have weakened, documenting a root-cause hypothesis, and thinking about what information or control could make the problem visible sooner.
+
 ## What I Mean by a “Silent Breakpoint”
 
-In this project, a **silent breakpoint** is a modeled point where a workflow becomes less reliable even though the full downstream impact may not be visible yet.
+In SBI, a **silent breakpoint** is a student-developed label for a modeled point where a workflow becomes less reliable before the full downstream effect is visible.
 
 Examples can include:
 
-- incomplete intake information,
-- documentation that is not ready for the next step,
-- unclear authorization ownership,
-- aging work without escalation,
-- open-loop handoffs,
+- incomplete or inconsistent intake information,
+- documentation that is not ready for the next administrative step,
+- an eligibility exception that is identified but not fully closed,
+- an aging prior-authorization request without visible ownership or escalation,
+- an open-loop handoff,
 - repeated manual workarounds,
-- inconsistent data capture,
-- or a problem that is visible to staff but not yet visible in formal reporting.
+- duplicate manual data entry,
+- or an issue that becomes visible only after it reaches scheduling, claims/revenue cycle, staff workload, or operational reporting.
 
-I use the term as a learning framework. It is not a clinical definition, industry standard, or validated risk model.
+**“Silent breakpoint” is not a clinical term, compliance standard, payer definition, or validated industry risk model.** It is an educational framework I use to organize simulated workflow analysis.
 
 ## Workflow View
 
-SBI follows the workflow forward while asking where the first instability appeared:
+SBI follows a simplified administrative workflow while asking where the first instability may have appeared:
 
 ```text
-Intake
-  ↓
-Documentation
-  ↓
-Authorization
-  ↓
-Handoff
-  ↓
-Technical / Administrative Execution
-  ↓
-Billing / Revenue Cycle
-  ↓
-Leadership Visibility
+Patient Access / Intake
+        ↓
+Documentation Readiness
+        ↓
+Eligibility / Authorization
+        ↓
+Handoff / Ownership
+        ↓
+Administrative Execution
+        ↓
+Claims / Revenue Cycle
+        ↓
+Operational Reporting / Visibility
 ```
 
-The important part for me is that the visible consequence may occur several steps after the original breakdown.
+This is a learning model, not a universal healthcare workflow. Actual workflows vary by organization, service, payer, technology, policy, and role.
 
-## Simulated Breakpoint Scoring Tool
+## Current 2026 Context
 
-The live project includes a simple educational calculator using five modeled dimensions:
+SBI is intentionally not a payer-rule engine or a compliance tool. Prior-authorization requirements and electronic data-exchange expectations continue to change.
 
-1. Patient impact
-2. Revenue impact
-3. Staff burden
-4. Repeat risk
+For example, under **CMS-0057-F**, certain prior-authorization operational provisions for impacted payers began in 2026, while many API requirements generally begin in 2027. CMS also requires specific reasons for denied prior-authorization decisions for impacted payers beginning in 2026. SBI does not attempt to reproduce those payer requirements; it uses prior authorization only as a simulated workflow domain for studying ownership, aging, documentation readiness, escalation, and handoffs.
+
+Official CMS source:
+https://www.cms.gov/newsroom/fact-sheets/cms-interoperability-prior-authorization-final-rule-cms-0057-f
+
+## Simulated Breakpoint Review Tool
+
+The live project includes a student-designed educational calculator with five modeled dimensions:
+
+1. Patient-facing impact potential
+2. Revenue-cycle impact potential
+3. Staff/workflow burden
+4. Repeat-pattern potential
 5. Visibility gap
 
-Each dimension is scored from 1 to 5. The values are added to create a total score from 5 to 25.
+Each dimension is scored from 1 to 5 and summed into a 5-to-25 **practice review score**.
 
-The current educational ranges are:
+The score is used only to compare fictional scenarios within the project. It is **not** a validated risk score, severity scale, patient-safety instrument, financial forecast, compliance threshold, or healthcare benchmark.
 
-| Total Score | Modeled Interpretation |
+The current student-designed review bands are:
+
+| Total Score | Educational Interpretation |
 |---:|---|
-| 5–9 | Low friction |
-| 10–14 | Moderate breakpoint |
-| 15–19 | High-risk breakpoint |
-| 20–25 | Critical modeled breakpoint |
+| 5–9 | Lower-priority modeled review |
+| 10–14 | Moderate-priority modeled review |
+| 15–19 | Higher-priority modeled review |
+| 20–25 | Highest-priority modeled review |
 
-These ranges are **student-designed learning assumptions**. They are not validated healthcare thresholds, benchmarks, compliance standards, or predictions of actual patient, financial, or operational outcomes.
+These bands are learning assumptions only.
 
-## Simulated Dashboard Example
+## Synthetic Dashboard Example
 
-The site also shows a synthetic dashboard example with values such as:
+The site includes demonstration values such as:
 
-- 24 modeled breakpoints logged
-- 5 modeled critical breakpoints
-- 9 modeled high-risk breakpoints
-- 18.7 modeled average breakpoint score
-- Authorization as the example top failure origin
-- Unclear ownership as the example most common root-cause theme
+- 24 modeled breakpoint records
+- 5 highest-priority modeled reviews
+- 9 higher-priority modeled reviews
+- 18.7 modeled average practice score
+- authorization as an example recurring workflow area
+- unclear ownership as an example review theme
 
-These values are demonstration data only. They do not represent an employer, healthcare organization, payer, patient population, or observed operational results.
+These values are synthetic design examples. They do **not** represent an employer, patient population, payer, healthcare organization, benchmark, observed operational result, or validated finding.
 
-## What I Learned
+## What I Am Practicing Through SBI
 
-The biggest lesson from SBI is that the last visible problem is not always the best place to start the analysis.
+Through this project, I am practicing:
 
-A denial can be the signal rather than the original failure. A rescheduled service can be the patient-facing consequence of an earlier ownership problem. Staff rework can be evidence that the workflow is depending on people to compensate for a weak process.
+- healthcare administrative workflow mapping,
+- patient-to-professional analysis,
+- root-cause hypothesis development,
+- closed-loop handoff thinking,
+- eligibility-exception ownership and closure,
+- prior-authorization aging and escalation visibility,
+- documentation-readiness review,
+- operational drift and repeated-workaround awareness,
+- patient-access risk interpretation,
+- staff-rework visibility,
+- claims/revenue-cycle workflow reasoning,
+- synthetic KPI and dashboard design,
+- student-level process-control thinking,
+- and clear separation between simulated evidence and real-world claims.
 
-From the patient side, none of those internal categories really matter in isolation. What matters is what the person experiences: delay, uncertainty, repeated requests, a confusing bill, or a service that cannot move forward as expected.
+## Patient-to-Professional Perspective
 
-That patient-to-professional perspective is why I want to learn how to trace problems back through the workflow instead of only reacting to the final outcome.
+The patient usually does not experience an internal workflow label. The patient experiences the result.
+
+They may know that they had to call again, wait longer, resend information, clarify coverage, or understand why the next step did not happen when expected. They may not know whether the internal issue involved eligibility, documentation, authorization, ownership, handoff, claim readiness, or a system workaround.
+
+That is why SBI keeps the patient-facing consequence connected to the internal workflow question without pretending the project can prove that one caused the other.
+
+My goal as a student and emerging healthcare operations professional is to learn how to ask better operational questions:
+
+- What should have happened?
+- What information or ownership was required?
+- What exception remained open?
+- Where did the workflow first lose control?
+- What became visible downstream?
+- What evidence supports the hypothesis?
+- What should remain a question rather than be treated as a conclusion?
 
 ## Portfolio Evidence
 
@@ -116,56 +151,40 @@ This repository includes:
 
 - `index.html` — interactive SBI project overview
 - `style.css` — project styling
-- `templates/breakpoint-log.csv` — simulated breakpoint-tracking structure
-- `templates/root-cause-library.csv` — root-cause practice library
-- `templates/case-study-template.md` — workflow case-study template
-- `templates/kpi-dictionary.md` — KPI-definition practice asset
+- `templates/breakpoint-log.csv` — fictional breakpoint log using cautious, hypothesis-based language
+- `templates/root-cause-library.csv` — possible contributing conditions, potential effects, student practice controls, and example measures
+- `templates/case-study-template.md` — student-level workflow case-study structure
+- `templates/kpi-dictionary.md` — educational KPI definitions and evidence boundaries
 - `assets/` — project visual assets
-
-## What I Am Practicing Through SBI
-
-Through this project, I am practicing:
-
-- Healthcare workflow mapping
-- Root-cause thinking
-- Handoff analysis
-- Prior authorization workflow visibility
-- Operational drift awareness
-- Patient-access risk interpretation
-- Staff-rework and workload visibility
-- Revenue-cycle workflow analysis
-- KPI and dashboard communication
-- Simulated risk scoring
-- Process-control thinking
-- Operational documentation
-- Patient-to-professional analysis
-- Clear separation between simulated evidence and real-world claims
 
 ## How SBI Fits in the Portfolio
 
-SBI is the fourth project in the workflow path I use across my healthcare operations portfolio:
+SBI is the fourth project in the workflow path I use across my Healthcare Operations Intelligence Engine™ portfolio:
 
 **EVIS → PARCS → DPIS → SBI → Habit Audit**
 
-- **EVIS** looks at eligibility and intake risk.
-- **PARCS** looks at prior authorization workflow risk, ownership, and escalation.
-- **DPIS** looks at upstream denial-prevention and claim-readiness risk.
-- **SBI** looks across the workflow and asks where the first control loss occurred.
-- **Habit Audit** looks at recurring operational habits that may make workflow risk more likely.
+- **EVIS** looks at eligibility, intake, and exception closure.
+- **PARCS** looks at prior-authorization workflow risk, documentation readiness, ownership, aging, and escalation.
+- **DPIS** looks at claim readiness and upstream denial-risk signals.
+- **SBI** looks across those workflows and asks where the first modeled control loss may have occurred.
+- **Habit Audit** steps back and asks whether repeated operational habits may be making similar problems more likely to recur.
 
 ## What This Project Is — and Is Not
 
-This is a **student-developed educational project**.
+This is a **student-developed educational portfolio project**.
 
 - All examples, cases, scores, dashboard values, and templates are simulated.
 - No protected health information (PHI) is used.
 - No real patient, payer, employer, claim, EHR, staffing, or financial data is used.
-- The project does not represent formal healthcare employment experience.
+- It does not represent formal healthcare employment experience.
 - It has not been deployed in a healthcare organization.
-- The scoring model is not a validated clinical, financial, compliance, or operational risk instrument.
-- I do not claim that SBI has reduced denials, delays, staff burnout, costs, or patient-access problems in the real world.
+- It is not a clinical, coding, billing, compliance, payer, financial, or medical-necessity decision tool.
+- The scoring model is not validated.
+- Root-cause statements are hypotheses for practice, not proven causation.
+- Potential effects are modeled possibilities, not documented patient, staff, financial, or quality outcomes.
+- I do not claim SBI has reduced denials, delays, staff workload, costs, patient-access problems, or any other real-world outcome.
 
-I want SBI to show how I am learning to trace healthcare workflow problems upstream, think about the people affected downstream, and communicate what the evidence can and cannot support.
+I want SBI to show how I am learning to trace administrative workflow problems upstream, keep the patient experience visible, organize evidence carefully, and communicate what a student simulation can and cannot support.
 
 ## Live Project
 
