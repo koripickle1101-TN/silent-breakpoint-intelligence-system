@@ -1,49 +1,81 @@
-# KPI Dictionary
+# SBI Practice KPI Dictionary
+
+These are student-developed example measures for simulated workflow analysis. They are not industry benchmarks, payer requirements, clinical measures, compliance standards, or validated performance indicators. A real organization would define measures using its own policies, systems, data definitions, and qualified review.
 
 ## Authorization Aging Days
 
-Measures how long prior authorization requests remain unresolved.
+Practice definition: the number of days a simulated prior-authorization request remains unresolved.
+
+Use in SBI: helps me practice identifying aging work that may need follow-up or escalation.
+
+## Claim Rejection Rate
+
+Practice definition: the percentage of simulated claims rejected before adjudication because they did not pass required submission or front-end edits.
+
+Use in SBI: helps distinguish a rejection from a downstream denial.
 
 ## Denial Rate
 
-Measures the percentage of claims denied by payers.
+Practice definition: the percentage of simulated adjudicated claims that receive a denial outcome.
 
-## Clean Claim Rate
+Use in SBI: used only as a downstream signal for further review; it does not prove the upstream cause.
 
-Measures the percentage of claims accepted without edits rework or denial.
+## Clean-Claim / First-Pass Readiness
 
-## Handoff Completion Rate
+Practice definition: an organization-specific concept for claims that can proceed through initial submission and edit checks without correction or avoidable rework.
 
-Measures whether responsibility was clearly transferred from one person team or workflow stage to another.
+Use in SBI: helps me think about claim readiness. SBI does not calculate or validate a real clean-claim rate.
 
-## Documentation Completion Rate
+## Handoff Closure Rate
 
-Measures whether clinical documentation was complete accurate and specific enough to support care coding quality and reimbursement.
+Practice definition: the percentage of simulated handoffs in which responsibility, next action, open issues, and receipt/acceptance are documented as complete.
 
-## Eligibility Verification Accuracy
+Use in SBI: helps me practice closed-loop ownership thinking.
 
-Measures whether patient insurance eligibility was verified correctly before service.
+## Documentation Readiness Rate
 
-## Duplicate Entry Rate
+Practice definition: the percentage of simulated cases in which the documentation needed for the next administrative workflow step appears present and clearly routed.
 
-Measures how often the same data must be manually entered into multiple systems.
+Use in SBI: this is not a coding, clinical documentation, medical-necessity, or compliance determination.
+
+## Eligibility Exception Closure Rate
+
+Practice definition: the percentage of simulated eligibility exceptions that are documented, assigned, acted on, and verified as closed before the workflow advances.
+
+Use in SBI: helps connect front-end verification to exception ownership and closure.
+
+## Duplicate Manual Entry Rate
+
+Practice definition: how often the same simulated information must be entered manually in more than one workflow location.
+
+Use in SBI: helps identify possible rework and data-consistency risk without assuming a specific EHR or system architecture.
 
 ## Escalation Response Time
 
-Measures how quickly urgent or aging issues are moved to the correct owner.
+Practice definition: the elapsed time between a simulated escalation trigger and acknowledgment by the assigned owner or queue.
 
-## Workload Per Staff Member
+Use in SBI: helps me practice thinking about time-sensitive ownership and follow-through.
 
-Measures the volume of work assigned to each staff member or team.
+## Modeled Work Queue Volume
 
-## Upstream Defect Rate
+Practice definition: the number of simulated items assigned to a person, team, or queue during a defined period.
 
-Measures workflow defects that occur before billing such as intake errors documentation gaps missing authorizations or incomplete handoffs.
+Use in SBI: provides a workload-visibility example. It is not a staffing benchmark or productivity standard.
+
+## Upstream Exception Rate
+
+Practice definition: the percentage of simulated cases with an unresolved intake, eligibility, documentation-readiness, authorization, or handoff exception before the next downstream step.
+
+Use in SBI: helps me look for earlier workflow signals rather than treating a later denial or delay as the whole story.
 
 ## Rework Rate
 
-Measures the amount of work that must be corrected repeated or reopened because the process did not work correctly the first time.
+Practice definition: the percentage of simulated cases requiring correction, repeat work, reopening, or additional follow-up because an earlier workflow step was incomplete or unresolved.
 
-## Patient Delay Rate
+Use in SBI: helps me practice identifying repeated operational effort.
 
-Measures how often patients experience delays because of workflow authorization documentation scheduling or handoff problems.
+## Patient-Facing Delay Indicator
+
+Practice definition: the percentage of simulated cases in which an unresolved administrative workflow issue is modeled as potentially contributing to a patient-facing delay.
+
+Use in SBI: this is an educational indicator, not a measure of actual patient harm, access outcomes, or clinical delay.
