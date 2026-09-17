@@ -1,58 +1,71 @@
 # Silent Breakpoint Case Study Template
 
+**Student-developed, simulated, educational, and no-PHI.**
+
+Use this template to practice tracing a fictional healthcare operations problem backward from a visible signal. Do not present a modeled condition as a proven root cause, real patient outcome, compliance finding, coding determination, payer decision, or employer result.
+
 ## Case Study Title
 
 Silent Breakpoint Analysis
 
-## Problem
+## Visible Workflow Signal
 
-Describe the operational issue in clear practical language.
+Describe the simulated downstream issue in clear, practical language.
 
-## Upstream Origin
+## Earlier Condition to Investigate
 
-Explain where the issue started before it became visible downstream.
+Identify the earlier workflow condition that may deserve review. Phrase this as a hypothesis or question rather than a confirmed cause.
 
-## Where It Became Visible
+## Where the Signal Became Visible
 
-Explain where the issue appeared later such as billing patient access staff workload quality reporting or leadership reporting.
+Describe where the simulated issue appeared later, such as patient access, scheduling, documentation workflow, claims/revenue cycle, staff workload, or operational reporting.
 
-## Silent Breakpoint Category
+## Modeled Breakpoint Category
 
-Choose the most accurate category.
+Choose the closest student-developed category, for example:
 
-Missing Handoff
-Duplicated Entry
-Undocumented Care
-Delayed Approval
-Manual Escalation
-Invisible Workload
-Eligibility Gap
-Documentation Specificity Gap
-Prior Authorization Delay
-Operational Visibility Gap
+- Handoff Closure Gap
+- Duplicate Manual Entry
+- Documentation Readiness Gap
+- Authorization Aging Gap
+- Manual Escalation Dependence
+- Work Queue Visibility Gap
+- Eligibility Exception Gap
+- Authorization-Service Alignment Gap
+- Operational Visibility Gap
+- Repeated Rework Pattern
 
-## Operational Impact
+## Potential Effects to Consider
 
-Patient Impact
+### Patient-facing effect
+What might the patient experience if the issue remains unresolved? Use cautious language such as *may*, *could*, or *might*.
 
-Staff Impact
+### Staff/workflow effect
+What additional work, clarification, or follow-up might be required?
 
-Revenue Impact
+### Revenue-cycle effect
+What claim-readiness, rejection, denial, or payment-delay risk might warrant review? Do not assume a financial outcome.
 
-Quality Impact
+## Root-Cause Hypothesis
 
-## Root Cause Hypothesis
+Explain what may have allowed the problem to continue. Separate the hypothesis from the evidence available in the simulation.
 
-Explain what likely allowed the problem to continue.
+## Student Practice Control Idea
 
-## Recommended Fix
+Describe a workflow control you would model for educational purposes, such as clearer ownership, an exception-closure step, an aging trigger, a handoff checklist, or a documented escalation pathway.
 
-Describe a practical workflow improvement.
+## Example Measure
 
-## Metric To Track
+Identify a simulated measure that could help make the workflow more visible. State that it is not a benchmark or validated performance measure.
 
-Identify the KPI that should be monitored after the fix.
+## Patient-to-Professional Reflection
 
-## Leadership Insight
+Explain what the patient might experience downstream and what the internal workflow may need to make visible earlier.
 
-Write one executive level takeaway.
+## Operational Takeaway
+
+Write one concise student-level takeaway about the workflow. Avoid executive, clinical, compliance, coding, or payer authority language.
+
+## Evidence Boundary
+
+State what the simulation can and cannot support. Confirm that the case uses no PHI, real patient information, employer data, payer case data, claims data, or real operational results.
