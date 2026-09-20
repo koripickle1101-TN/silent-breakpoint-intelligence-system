@@ -35,6 +35,7 @@ Examples can include:
 - an open-loop handoff,
 - repeated manual workarounds,
 - duplicate manual data entry,
+- a payment adjustment, reversal, offset, or recovery signal that is visible after money has moved but is not yet fully reconciled,
 - or an issue that becomes visible only after it reaches scheduling, claims/revenue cycle, staff workload, or operational reporting.
 
 **“Silent breakpoint” is not a clinical term, compliance standard, payer definition, or validated industry risk model.** It is an educational framework I use to organize simulated workflow analysis.
@@ -123,9 +124,36 @@ Through this project, I am practicing:
 - patient-access risk interpretation,
 - staff-rework visibility,
 - claims/revenue-cycle workflow reasoning,
+- payment recovery and reconciliation traceback,
+- ERA/EOB evidence review concepts,
+- post-payment ownership and closure thinking,
 - synthetic KPI and dashboard design,
 - student-level process-control thinking,
 - and clear separation between simulated evidence and real-world claims.
+
+## Payment Recovery / Reconciliation Breakpoint
+
+SBI now includes a simulated financial-workflow breakpoint example for situations where a later payment is reduced, reversed, adjusted, or linked to earlier recovery activity.
+
+The review path is:
+
+**Financial signal → trace original transaction → review evidence → separate fact from unanswered questions → assign owner → document next action → reconcile remaining balance → verify closure**
+
+Key distinctions:
+
+- **Paid ≠ correctly reconciled**
+- **Reduced payment ≠ explanation of the underlying recovery**
+- **Adjusted balance ≠ reconciled account**
+
+Control question:
+
+> **If a later payment is reduced because of an earlier account, what evidence should connect the recovery to the original transaction before the adjustment is treated as fully reconciled?**
+
+Patient-to-professional insight:
+
+> **The patient sees the balance. The operations team has to understand the chain of transactions that produced it.**
+
+This remains a student workflow-analysis exercise. SBI does not determine payer liability, contract correctness, coding accuracy, refund obligations, reimbursement, or legal requirements.
 
 ## Patient-to-Professional Perspective
 
