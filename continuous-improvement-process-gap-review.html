@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SBI | Continuous Improvement & Process Gap Review™</title>
+  <meta name="description" content="Student-developed, simulated, no-PHI interactive healthcare operations continuous-improvement and process-gap review by Kori Pickle.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="continuous-improvement-page">
+<main>
+  <section class="ci-brandbar shell-card">
+    <div class="ci-brand-lockup">
+      <img src="kp-logo.svg" alt="Kori Pickle KP logo">
+      <div>
+        <p class="eyebrow">Healthcare Operations Intelligence Engine™</p>
+        <strong>Silent Breakpoint Intelligence™</strong>
+      </div>
+    </div>
+    <div class="ci-nav">
+      <a href="index.html">SBI Home</a>
+      <a href="#review">Process Gap Review</a>
+      <a href="#evidence">Evidence Logic</a>
+      <a href="#patient">Patient Perspective</a>
+    </div>
+  </section>
+
+  <section class="ci-hero shell-card">
+    <p class="eyebrow">Student-developed · Simulated · Synthetic data only · No PHI</p>
+    <h1>Continuous Improvement &amp; Process Gap Review™</h1>
+    <p class="subtitle">An interactive healthcare operations practice workspace for separating immediate case resolution from process improvement, tracing repeated issues backward, testing one small modeled control change, and reviewing whether the synthetic pattern actually changed.</p>
+    <p class="tagline">Where did the workflow first lose control?</p>
+    <div class="hero-actions">
+      <a class="button primary" href="#review">Open Interactive Review</a>
+      <a class="button secondary" href="index.html#framework">Return to SBI Framework</a>
+    </div>
+  </section>
+
+  <section class="shell-card">
+    <p class="eyebrow">Continuous-improvement operating model</p>
+    <h2>Resolve the case. Trace the gap. Test the control. Verify the pattern.</h2>
+    <div class="ci-rail">
+      <div><span>01</span><strong>Visible issue</strong></div>
+      <div><span>02</span><strong>Immediate resolution</strong></div>
+      <div><span>03</span><strong>Backward trace</strong></div>
+      <div><span>04</span><strong>Recurring-pattern review</strong></div>
+      <div><span>05</span><strong>Process-gap hypothesis</strong></div>
+      <div><span>06</span><strong>Small control change</strong></div>
+      <div><span>07</span><strong>Owner</strong></div>
+      <div><span>08</span><strong>Implementation evidence</strong></div>
+      <div><span>09</span><strong>Post-change review</strong></div>
+      <div><span>10</span><strong>Recurrence result</strong></div>
+    </div>
+    <div class="ci-distinction-grid">
+      <div><strong>Case closed</strong><span>≠ process gap closed</span></div>
+      <div><strong>Immediate correction</strong><span>≠ preventive improvement</span></div>
+      <div><strong>Process change</strong><span>≠ proven improvement</span></div>
+      <div><strong>Repeated issue</strong><span>≠ proven systemic cause</span></div>
+    </div>
+  </section>
+
+  <section id="review" class="shell-card">
+    <div class="section-header">
+      <p class="eyebrow">Interactive practice workspace</p>
+      <h2>Continuous Improvement &amp; Process Gap Review</h2>
+    </div>
+    <p>This tool uses fictional scenarios to practice a Kaizen-style improvement loop without claiming Lean expertise, real operational authority, or real healthcare outcomes.</p>
+
+    <div class="ci-workbench">
+      <div class="ci-workbench-head">
+        <div>
+          <p class="card-label">Synthetic workflow scenario</p>
+          <h3 id="ciTitle">Eligibility exception repeated across cases</h3>
+        </div>
+        <div id="ciStateChip" class="ci-chip">TRACE THE GAP</div>
+      </div>
+
+      <label>Choose a fictional scenario
+        <select id="ciScenario">
+          <option value="eligibility">Repeated eligibility exception</option>
+          <option value="authorization">Repeated authorization follow-up delay</option>
+          <option value="claim">Repeated corrected-claim pattern</option>
+          <option value="handoff">Repeated ownership / handoff gap</option>
+          <option value="payment">Repeated payment-reconciliation exception</option>
+        </select>
+      </label>
+      <div id="ciScenarioSummary" class="ci-summary"></div>
+
+      <form id="ciForm">
+        <div class="ci-form-section">
+          <p class="card-label">A · Immediate case resolution</p>
+          <div class="ci-form-grid">
+            <label>Issue Category
+              <select id="issueCategory">
+                <option>Eligibility / coverage</option>
+                <option>Authorization / referral</option>
+                <option>Claim correction / denial</option>
+                <option>Handoff / ownership</option>
+                <option>Payment / reconciliation</option>
+                <option>Documentation / data integrity</option>
+                <option>Other administrative workflow</option>
+              </select>
+            </label>
+            <label>Immediate Case Resolution Status
+              <select id="caseResolutionStatus">
+                <option>Not resolved</option>
+                <option>Partially resolved</option>
+                <option>Resolved in synthetic case</option>
+              </select>
+            </label>
+          </div>
+          <label>Immediate Case Resolution
+            <textarea id="immediateResolution" rows="4" placeholder="What was done to resolve the individual synthetic case?"></textarea>
+          </label>
+        </div>
+
+        <div class="ci-form-section">
+          <p class="card-label">B · Backward trace and recurring-pattern review</p>
+          <div class="ci-form-grid">
+            <label>Earlier Workflow Point Reviewed
+              <select id="earlierPoint">
+                <option>Not reviewed</option>
+                <option>Patient access / intake</option>
+                <option>Eligibility / coverage</option>
+                <option>Authorization / referral</option>
+                <option>Documentation readiness</option>
+                <option>Handoff / ownership</option>
+                <option>Claim preparation / submission</option>
+                <option>Payer acknowledgement / follow-up</option>
+                <option>Payment / reconciliation</option>
+              </select>
+            </label>
+            <label>Similar Cases Found?
+              <select id="similarCases">
+                <option>Not reviewed</option>
+                <option>No</option>
+                <option>Yes</option>
+                <option>Needs more evidence</option>
+              </select>
+            </label>
+            <label>Recurrence Count
+              <input id="recurrenceCount" type="number" min="0" max="99" value="0">
+            </label>
+            <label>Pattern Classification
+              <select id="patternClass">
+                <option>Not established</option>
+                <option>Isolated synthetic case</option>
+                <option>Possible recurring pattern</option>
+                <option>Repeated synthetic pattern</option>
+                <option>Needs more evidence</option>
+              </select>
+            </label>
+          </div>
+          <label>Earliest Supported Gap
+            <textarea id="supportedGap" rows="4" placeholder="What is the earliest workflow gap supported by the synthetic evidence?"></textarea>
+          </label>
+          <label>Process-Gap Hypothesis
+            <textarea id="gapHypothesis" rows="4" placeholder="What may be contributing? Keep this as a hypothesis, not a proven conclusion."></textarea>
+          </label>
+        </div>
+
+        <div class="ci-form-section">
+          <p class="card-label">C · Small modeled improvement</p>
+          <label>Proposed Small Improvement
+            <textarea id="smallImprovement" rows="4" placeholder="Example: require an exception owner before modeled workflow advancement."></textarea>
+          </label>
+          <div class="ci-form-grid">
+            <label>Control Owner
+              <select id="controlOwner">
+                <option>Unassigned</option>
+                <option>Patient Access</option>
+                <option>Eligibility / Financial Clearance</option>
+                <option>Prior Authorization Support</option>
+                <option>Documentation / HIM Support</option>
+                <option>Claims / A/R Follow-Up</option>
+                <option>Revenue Cycle Support</option>
+                <option>Qualified Review</option>
+              </select>
+            </label>
+            <label>Implementation Date
+              <input id="implementationDate" type="date">
+            </label>
+          </div>
+          <label>Evidence of Implementation
+            <textarea id="implementationEvidence" rows="4" placeholder="What synthetic evidence shows the control was actually implemented rather than only proposed?"></textarea>
+          </label>
+        </div>
+
+        <div class="ci-form-section">
+          <p class="card-label">D · Measurement and sustainability review</p>
+          <div class="ci-form-grid">
+            <label>Pre-Change Pattern
+              <select id="prePattern">
+                <option>Not documented</option>
+                <option>Isolated</option>
+                <option>Possible recurrence</option>
+                <option>Repeated pattern</option>
+                <option>Needs more evidence</option>
+              </select>
+            </label>
+            <label>Post-Change Pattern
+              <select id="postPattern">
+                <option>Not reviewed yet</option>
+                <option>No repeated pattern visible</option>
+                <option>Lower modeled recurrence</option>
+                <option>Pattern unchanged</option>
+                <option>Pattern increased</option>
+                <option>Inconclusive / more evidence needed</option>
+              </select>
+            </label>
+            <label>Follow-Up Review Date
+              <input id="followUpDate" type="date">
+            </label>
+            <label>Improvement Supported?
+              <select id="improvementSupported">
+                <option>Not yet determined</option>
+                <option>Supported in synthetic review</option>
+                <option>Not supported in synthetic review</option>
+                <option>Inconclusive</option>
+              </select>
+            </label>
+            <label>Additional Review Needed?
+              <select id="additionalReview">
+                <option>Not determined</option>
+                <option>No additional review identified</option>
+                <option>Yes — continue monitoring</option>
+                <option>Yes — revise modeled control</option>
+                <option>Yes — qualified review needed</option>
+              </select>
+            </label>
+          </div>
+          <label>Pre-Change Evidence
+            <textarea id="preEvidence" rows="4" placeholder="What synthetic pattern existed before the change?"></textarea>
+          </label>
+          <label>Post-Change Evidence
+            <textarea id="postEvidence" rows="4" placeholder="What synthetic evidence supports the post-change interpretation?"></textarea>
+          </label>
+        </div>
+
+        <div class="ci-form-section">
+          <p class="card-label">E · Patient and staff effect</p>
+          <div class="ci-form-grid">
+            <label>Potential Patient-Facing Effect
+              <select id="patientEffect">
+                <option>Repeated call / explanation</option>
+                <option>Delay / uncertainty</option>
+                <option>Billing confusion</option>
+                <option>Coverage / authorization uncertainty</option>
+                <option>Repeated information request</option>
+                <option>No modeled patient-facing effect identified</option>
+              </select>
+            </label>
+            <label>Potential Staff Effect
+              <select id="staffEffect">
+                <option>Rework / repeated correction</option>
+                <option>Queue aging / extra follow-up</option>
+                <option>Context reconstruction</option>
+                <option>Manual workaround</option>
+                <option>Escalation burden</option>
+                <option>No modeled staff effect identified</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="ci-actions">
+          <button type="submit" class="button primary">Evaluate Improvement Loop</button>
+          <button type="button" id="ciSave" class="button secondary">Save Simulated Review</button>
+          <button type="button" id="ciReset" class="button secondary">Reset Scenario</button>
+        </div>
+      </form>
+
+      <div class="ci-progress"><div id="ciProgressBar"></div></div>
+      <div id="ciResult" class="ci-result" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="evidence" class="shell-card">
+    <p class="eyebrow">Evidence logic</p>
+    <h2>What the review is testing</h2>
+    <div class="ci-decision-grid">
+      <article><p class="card-label">Case fixed / recurrence unknown</p><h3>Do not claim process improvement.</h3><p>The individual problem may be resolved while the workflow gap remains untested.</p></article>
+      <article><p class="card-label">Repeated pattern / gap unclear</p><h3>Trace before redesigning.</h3><p>Recurrence supports deeper review, but it does not prove a systemic cause.</p></article>
+      <article><p class="card-label">Control proposed / not implemented</p><h3>A plan is not a process change.</h3><p>Implementation evidence should show that the modeled control actually entered the workflow.</p></article>
+      <article><p class="card-label">Change implemented / no follow-up</p><h3>Process change ≠ proven improvement.</h3><p>Post-change evidence is needed before the simulation supports an improvement conclusion.</p></article>
+      <article><p class="card-label">Pattern improved once</p><h3>Review sustainability.</h3><p>A one-time favorable result is not the same as a stable control. Continue monitoring when evidence is limited.</p></article>
+      <article><p class="card-label">Evidence supports change</p><h3>Document cautiously.</h3><p>State that improvement is supported within the synthetic review—not that real patient, financial, or operational outcomes improved.</p></article>
+    </div>
+  </section>
+
+  <section id="patient" class="shell-card">
+    <p class="eyebrow">Patient-to-professional perspective</p>
+    <h2>The patient needs the individual problem resolved. Operations also has to ask whether the workflow was strengthened.</h2>
+    <div class="ci-quote-grid">
+      <blockquote>“They fixed my bill.”</blockquote>
+      <blockquote>“Someone finally updated my insurance.”</blockquote>
+      <blockquote>“The authorization finally went through.”</blockquote>
+      <blockquote>“They corrected the claim.”</blockquote>
+    </div>
+    <p class="ci-insight">Should another patient have to encounter the same preventable problem tomorrow?</p>
+    <p>The patient experiences the immediate result. A healthcare operations team may also need to review recurrence, ownership, process controls, measurement, and whether the improvement can be sustained.</p>
+  </section>
+
+  <section class="shell-card">
+    <p class="eyebrow">Career practice · 2026–2027</p>
+    <h2>What this module lets me practice</h2>
+    <div class="ci-skill-grid">
+      <div><strong>Root-cause reasoning</strong><span>Trace the visible issue backward without treating a hypothesis as fact.</span></div>
+      <div><strong>Recurrence review</strong><span>Use repeated exceptions as a signal for deeper investigation.</span></div>
+      <div><strong>Process controls</strong><span>Design one small modeled control rather than assuming a full redesign is required.</span></div>
+      <div><strong>Measurement</strong><span>Compare pre-change and post-change synthetic evidence.</span></div>
+      <div><strong>Sustainability</strong><span>Recheck the pattern instead of assuming one favorable result proves durable improvement.</span></div>
+    </div>
+    <div class="ci-boundary">
+      <strong>Evidence boundary</strong>
+      <p>I am learning to use continuous-improvement thinking in student-developed, simulated, no-PHI healthcare operations workflows. This project does not represent Lean/Kaizen certification, quality-improvement employment experience, management authority, or real-world healthcare outcomes.</p>
+    </div>
+  </section>
+
+  <section class="ci-signature shell-card">
+    <img src="kp-logo.svg" alt="Kori Pickle KP logo">
+    <div>
+      <span class="ci-signature-name">Kori Pickle</span>
+      <div class="ci-signature-rule"></div>
+      <p>Patient-to-professional healthcare operations portfolio</p>
+      <p>Healthcare Operations Intelligence Engine™</p>
+    </div>
+  </section>
+</main>
+
+<script>
+const scenarios={
+  eligibility:{
+    title:"Eligibility exception repeated across cases",
+    summary:"A synthetic eligibility issue is resolved on the current account, but similar cases suggest the exception may be moving downstream before ownership and verified closure.",
+    category:"Eligibility / coverage",
+    point:"Eligibility / coverage",
+    patient:"Coverage / authorization uncertainty",
+    staff:"Rework / repeated correction"
+  },
+  authorization:{
+    title:"Authorization follow-up delay repeated across cases",
+    summary:"A modeled authorization eventually moves forward, but repeated aging and unclear ownership suggest a process-gap review may be justified.",
+    category:"Authorization / referral",
+    point:"Authorization / referral",
+    patient:"Delay / uncertainty",
+    staff:"Queue aging / extra follow-up"
+  },
+  claim:{
+    title:"Corrected-claim pattern repeated in the queue",
+    summary:"Individual synthetic claims are corrected, but repeated correction categories raise the question of whether the earlier workflow needs a preventive control.",
+    category:"Claim correction / denial",
+    point:"Claim preparation / submission",
+    patient:"Billing confusion",
+    staff:"Rework / repeated correction"
+  },
+  handoff:{
+    title:"Repeated ownership gap at a workflow handoff",
+    summary:"The immediate synthetic issue is resolved, but several cases show unclear next-action ownership after work changes hands.",
+    category:"Handoff / ownership",
+    point:"Handoff / ownership",
+    patient:"Repeated call / explanation",
+    staff:"Context reconstruction"
+  },
+  payment:{
+    title:"Repeated payment-reconciliation exception",
+    summary:"A modeled balance is corrected, but recurring reconciliation exceptions suggest the financial workflow may need a stronger evidence-and-closure control.",
+    category:"Payment / reconciliation",
+    point:"Payment / reconciliation",
+    patient:"Billing confusion",
+    staff:"Rework / repeated correction"
+  }
+};
+
+const q=s=>document.querySelector(s);
+const today=()=>new Date().toISOString().slice(0,10);
+const addDays=n=>{const d=new Date();d.setDate(d.getDate()+n);return d.toISOString().slice(0,10)};
+
+function loadScenario(){
+  const s=scenarios[q("#ciScenario").value];
+  q("#ciTitle").textContent=s.title;
+  q("#ciScenarioSummary").innerHTML="<strong>"+s.title+"</strong><br>"+s.summary;
+  q("#issueCategory").value=s.category;
+  q("#caseResolutionStatus").value="Not resolved";
+  q("#immediateResolution").value="";
+  q("#earlierPoint").value=s.point;
+  q("#similarCases").value="Not reviewed";
+  q("#recurrenceCount").value=0;
+  q("#patternClass").value="Not established";
+  q("#supportedGap").value="";
+  q("#gapHypothesis").value="";
+  q("#smallImprovement").value="";
+  q("#controlOwner").value="Unassigned";
+  q("#implementationDate").value=today();
+  q("#implementationEvidence").value="";
+  q("#prePattern").value="Not documented";
+  q("#postPattern").value="Not reviewed yet";
+  q("#followUpDate").value=addDays(14);
+  q("#improvementSupported").value="Not yet determined";
+  q("#additionalReview").value="Not determined";
+  q("#preEvidence").value="";
+  q("#postEvidence").value="";
+  q("#patientEffect").value=s.patient;
+  q("#staffEffect").value=s.staff;
+  evaluate(false);
+}
+
+function evaluate(scroll=true){
+  const resolved=q("#caseResolutionStatus").value==="Resolved in synthetic case";
+  const immediate=!!q("#immediateResolution").value.trim();
+  const earlier=q("#earlierPoint").value!=="Not reviewed";
+  const similar=q("#similarCases").value;
+  const recurrence=Number(q("#recurrenceCount").value)||0;
+  const pattern=q("#patternClass").value;
+  const gap=!!q("#supportedGap").value.trim();
+  const hypothesis=!!q("#gapHypothesis").value.trim();
+  const improvement=!!q("#smallImprovement").value.trim();
+  const owner=q("#controlOwner").value!=="Unassigned";
+  const implementation=!!q("#implementationEvidence").value.trim();
+  const pre=q("#prePattern").value!=="Not documented" && !!q("#preEvidence").value.trim();
+  const post=q("#postPattern").value!=="Not reviewed yet" && !!q("#postEvidence").value.trim();
+  const reviewDate=!!q("#followUpDate").value;
+  const supported=q("#improvementSupported").value;
+  const additional=q("#additionalReview").value!=="Not determined";
+
+  const controls=[resolved,immediate,earlier,similar!=="Not reviewed",pattern!=="Not established",gap,hypothesis,improvement,owner,implementation,pre,post,reviewDate,supported!=="Not yet determined",additional];
+  const pct=Math.round(controls.filter(Boolean).length/controls.length*100);
+  q("#ciProgressBar").style.width=pct+"%";
+
+  let chip,state,title,body;
+  const recurrenceSignal=similar==="Yes" || recurrence>1 || pattern==="Possible recurring pattern" || pattern==="Repeated synthetic pattern";
+
+  if(!resolved || !immediate){
+    chip="RESOLVE CASE";state="blocked";title="Immediate case resolution is still incomplete";
+    body="The process-gap review should not substitute for resolving the individual synthetic case. Document the immediate resolution first.";
+  }else if(!earlier || similar==="Not reviewed" || pattern==="Not established"){
+    chip="TRACE THE GAP";state="review";title="Case resolved — process-gap evidence is not yet established";
+    body="Trace the workflow backward and review whether this is isolated, recurring, or still uncertain.";
+  }else if(!gap || !hypothesis){
+    chip="EVIDENCE BOUNDARY";state="review";title="Pattern reviewed — earliest supported gap or hypothesis is incomplete";
+    body="Document the earliest supported gap and keep the process-gap hypothesis separate from what the synthetic evidence actually proves.";
+  }else if(recurrenceSignal && (!improvement || !owner)){
+    chip="DESIGN CONTROL";state="active";title="A recurring signal is visible — a small modeled improvement needs ownership";
+    body="Choose one controllable improvement and assign an owner rather than jumping to a full redesign.";
+  }else if(improvement && !implementation){
+    chip="IMPLEMENTATION EVIDENCE";state="active";title="Improvement proposed — implementation is not yet evidenced";
+    body="A proposed control is not a process change. Document synthetic evidence that the modeled control was actually implemented.";
+  }else if(!pre){
+    chip="BASELINE NEEDED";state="review";title="Control implemented — pre-change evidence is incomplete";
+    body="Document the synthetic pre-change pattern so the later review has something meaningful to compare.";
+  }else if(!post || !reviewDate){
+    chip="POST-CHANGE REVIEW";state="active";title="Implementation documented — outcome review is still pending";
+    body="Review the post-change pattern on the planned follow-up date before claiming improvement.";
+  }else if(supported==="Not yet determined" || !additional){
+    chip="INTERPRET RESULT";state="review";title="Pre/post evidence exists — interpretation still needs to be documented";
+    body="State whether the synthetic review supports improvement, does not support it, or remains inconclusive, and document whether additional review is needed.";
+  }else if(supported==="Supported in synthetic review"){
+    chip="SUPPORTED IN SIMULATION";state="closed";title="The modeled improvement is supported within this synthetic review";
+    body="The review documents case resolution, traceback, recurrence evidence, a small control change, implementation evidence, and post-change comparison. This does not prove real-world healthcare improvement.";
+  }else if(supported==="Not supported in synthetic review"){
+    chip="REVISE CONTROL";state="active";title="The modeled change did not improve the synthetic pattern";
+    body="Keep the process gap open for additional review, revise the modeled control, or gather better evidence rather than declaring success.";
+  }else{
+    chip="MORE EVIDENCE";state="review";title="The synthetic evidence is inconclusive";
+    body="Continue monitoring or revise the review design. An uncertain result should remain uncertain.";
+  }
+
+  q("#ciStateChip").textContent=chip;
+  const result=q("#ciResult");
+  result.className="ci-result "+state;
+  result.innerHTML='<p class="card-label">Improvement-loop state · '+pct+'% documented</p><h3>'+title+'</h3><p>'+body+'</p><p><strong>Operational question:</strong> Did the preventive control actually change the recurring pattern?</p>';
+  if(scroll) result.scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+q("#ciScenario").addEventListener("change",loadScenario);
+document.querySelectorAll("#ciForm input,#ciForm select,#ciForm textarea").forEach(el=>{
+  el.addEventListener("change",()=>evaluate(false));
+  el.addEventListener("input",()=>evaluate(false));
+});
+q("#ciForm").addEventListener("submit",e=>{e.preventDefault();evaluate(true);});
+q("#ciSave").addEventListener("click",()=>{
+  evaluate(false);
+  q("#ciResult").insertAdjacentHTML("beforeend","<p><strong>Simulated review saved in this browser session:</strong> "+q("#issueCategory").value+" · Owner: "+q("#controlOwner").value+" · Improvement status: "+q("#improvementSupported").value+"</p>");
+});
+q("#ciReset").addEventListener("click",loadScenario);
+loadScenario();
+</script>
+</body>
+</html>
