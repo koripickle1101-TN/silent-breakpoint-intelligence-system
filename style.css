@@ -1,4 +1,4 @@
-:root {
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,500;1,6..72,600&display=swap");\n\n:root {
   --white: #ffffff;
   --black: #111111;
   --charcoal: #333333;
@@ -789,4 +789,320 @@ footer p {
   .ci-distinction-grid,.ci-form-grid,.ci-decision-grid,.ci-skill-grid,.ci-launch-grid,.ci-quote-grid{grid-template-columns:1fr}
   .ci-chip{display:inline-block;margin-top:14px}
   .ci-signature img,.ci-signature-index img{margin-bottom:16px}
+}
+
+/* SBI production-quality continuous-improvement upgrade */
+.continuous-improvement-page{
+  --white:#FFFFFF;
+  --black:#000000;
+  --orange:#FF8200;
+  background:#FFFFFF;
+  color:#000000;
+  font-family:"Inter",Arial,sans-serif;
+}
+.continuous-improvement-page *{max-width:100%}
+.continuous-improvement-page .shell-card{
+  border:1px solid #000000;
+  border-radius:0;
+  box-shadow:none;
+  background:#FFFFFF;
+}
+.continuous-improvement-page .shell-card:before{
+  background:#FF8200;
+  opacity:1;
+  left:0;
+  right:0;
+  top:0;
+  height:3px;
+}
+.continuous-improvement-page h1,
+.continuous-improvement-page h2,
+.continuous-improvement-page h3,
+.continuous-improvement-page h4,
+.continuous-improvement-page .ci-signature-name{
+  font-family:"Newsreader",Georgia,"Times New Roman",serif;
+  color:#000000;
+}
+.continuous-improvement-page h1,
+.continuous-improvement-page h2{
+  font-weight:600;
+  letter-spacing:-.035em;
+}
+.continuous-improvement-page p,
+.continuous-improvement-page label,
+.continuous-improvement-page span,
+.continuous-improvement-page small,
+.continuous-improvement-page input,
+.continuous-improvement-page select,
+.continuous-improvement-page textarea,
+.continuous-improvement-page button,
+.continuous-improvement-page a{
+  font-family:"Inter",Arial,sans-serif;
+}
+.continuous-improvement-page .ci-signature-name{
+  font-family:"Newsreader",Georgia,serif;
+  font-style:italic;
+  font-weight:500;
+}
+.continuous-improvement-page .button{
+  min-height:46px;
+  padding:11px 16px;
+  border-radius:0;
+  border:1px solid #000000;
+  font-weight:800;
+  line-height:1.15;
+}
+.continuous-improvement-page .button.primary{
+  background:#FF8200;
+  color:#000000;
+  border-color:#FF8200;
+}
+.continuous-improvement-page .button.secondary{
+  background:#FFFFFF;
+  color:#000000;
+}
+.continuous-improvement-page .button:focus-visible,
+.continuous-improvement-page input:focus-visible,
+.continuous-improvement-page select:focus-visible,
+.continuous-improvement-page textarea:focus-visible,
+.continuous-improvement-page a:focus-visible{
+  outline:3px solid #FF8200;
+  outline-offset:3px;
+}
+.ci-review-header,
+.ci-saved-head,
+.ci-summary-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:22px;
+}
+.ci-control-status{
+  display:grid;
+  grid-template-columns:minmax(0,280px) 1fr;
+  align-items:end;
+  gap:20px;
+  margin-top:24px;
+}
+.ci-control-status strong{
+  display:block;
+  font-family:"Inter",Arial,sans-serif;
+  font-size:.95rem;
+  margin-top:5px;
+}
+.ci-progress{
+  margin:0;
+  height:12px;
+  border:1px solid #000000;
+  background:#FFFFFF;
+}
+#ciProgressBar{background:#FF8200}
+.ci-next-control{
+  margin-top:16px;
+  border:1px solid #000000;
+  border-left:8px solid #FF8200;
+  padding:18px;
+  background:#FFFFFF;
+}
+.ci-next-control strong{
+  display:block;
+  font-family:"Newsreader",Georgia,serif;
+  font-size:clamp(1.35rem,3vw,2rem);
+  line-height:1.12;
+  margin-top:6px;
+}
+.ci-missing{
+  border-left:5px solid #FF8200;
+  padding-left:12px;
+}
+.ci-missing select,
+.ci-missing input,
+.ci-missing textarea{
+  border:2px solid #FF8200!important;
+}
+.ci-evidence-summary{
+  margin-top:24px;
+  border:2px solid #000000;
+  padding:22px;
+  background:#FFFFFF;
+}
+.ci-summary-head h3{
+  margin:5px 0 0;
+  font-size:clamp(1.7rem,4vw,2.6rem);
+}
+.ci-summary-state{
+  border:1px solid #FF8200;
+  padding:8px 11px;
+  font-size:.72rem;
+  font-weight:900;
+  letter-spacing:.08em;
+  white-space:nowrap;
+}
+.ci-evidence-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+  margin-top:18px;
+}
+.ci-evidence-grid>div{
+  border:1px solid #000000;
+  border-top:4px solid #FF8200;
+  padding:15px;
+  background:#FFFFFF;
+}
+.ci-evidence-grid span,
+.ci-evidence-grid strong{display:block}
+.ci-evidence-grid span{
+  font-size:.72rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.ci-evidence-grid strong{
+  font-family:"Newsreader",Georgia,serif;
+  font-size:1.25rem;
+  line-height:1.12;
+  margin-top:7px;
+}
+.ci-save-confirmation{
+  border-top:1px solid #000000;
+  margin-top:16px!important;
+  padding-top:14px;
+}
+.ci-saved-panel{
+  margin-top:28px;
+  border:2px solid #000000;
+  border-top:8px solid #FF8200;
+  padding:24px;
+  background:#FFFFFF;
+}
+.ci-saved-head h3{
+  font-family:"Newsreader",Georgia,serif;
+  font-size:clamp(1.8rem,4vw,2.7rem);
+  margin:4px 0 8px;
+}
+.ci-saved-list{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+  margin-top:20px;
+}
+.ci-saved-card{
+  border:1px solid #000000;
+  padding:20px;
+  background:#FFFFFF;
+}
+.ci-saved-card h4{
+  font-size:1.55rem;
+  line-height:1.06;
+  margin:10px 0 14px;
+}
+.ci-saved-card p{margin:6px 0}
+.ci-saved-meta{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  border-bottom:1px solid #000000;
+  padding-bottom:10px;
+}
+.ci-saved-meta span{
+  font-size:.7rem;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+.ci-saved-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:16px;
+}
+.ci-empty-state{
+  border:1px solid #000000;
+  padding:20px;
+  background:#FFFFFF;
+}
+.ci-empty-state strong,
+.ci-empty-state span{display:block}
+.ci-empty-state span{margin-top:6px}
+.ci-workbench select,
+.ci-workbench input,
+.ci-workbench textarea{
+  border-radius:0;
+  border:1px solid #000000;
+  background:#FFFFFF;
+  color:#000000;
+  min-height:48px;
+}
+.ci-workbench textarea{
+  min-height:112px;
+  resize:vertical;
+}
+.ci-brand-lockup img,
+.ci-signature img,
+.ci-signature-index img{
+  display:block;
+  object-fit:contain;
+}
+.ci-brand-lockup img{width:68px;height:68px}
+.ci-signature img{width:96px;height:96px}
+.ci-signature-rule{background:#FF8200}
+@media(max-width:900px){
+  .ci-evidence-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ci-saved-list{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .continuous-improvement-page main{
+    width:min(100%,calc(100vw - 24px));
+    padding-top:12px;
+  }
+  .continuous-improvement-page .shell-card{
+    padding:24px 18px;
+    margin-bottom:16px;
+    overflow:visible;
+  }
+  .ci-review-header,
+  .ci-saved-head,
+  .ci-summary-head,
+  .ci-control-status{
+    display:block;
+  }
+  .ci-review-header .button,
+  .ci-saved-head .button{
+    width:100%;
+    margin-top:14px;
+  }
+  .ci-evidence-grid{grid-template-columns:1fr}
+  .ci-saved-meta{display:block}
+  .ci-saved-meta span+span{margin-top:5px}
+  .ci-actions,
+  .ci-saved-actions{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+  .ci-actions .button,
+  .ci-saved-actions .button{
+    width:100%;
+  }
+  .ci-workbench{
+    padding:18px 14px;
+    box-shadow:6px 6px 0 #FF8200;
+  }
+  .ci-chip,
+  .ci-summary-state{
+    display:inline-block;
+    margin-top:12px;
+    white-space:normal;
+  }
+  .ci-nav{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+  .ci-nav a{
+    padding:8px 0;
+  }
+  .ci-rail{
+    grid-template-columns:1fr 1fr;
+  }
 }
