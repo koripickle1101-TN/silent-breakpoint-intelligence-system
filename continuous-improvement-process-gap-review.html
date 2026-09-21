@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#FFFFFF">
   <title>SBI | Continuous Improvement & Process Gap Review™</title>
   <meta name="description" content="Student-developed, simulated, no-PHI interactive healthcare operations continuous-improvement and process-gap review by Kori Pickle.">
   <link rel="stylesheet" href="style.css">
@@ -20,6 +21,7 @@
     <div class="ci-nav">
       <a href="index.html">SBI Home</a>
       <a href="#review">Process Gap Review</a>
+      <a href="#saved">Saved Reviews</a>
       <a href="#evidence">Evidence Logic</a>
       <a href="#patient">Patient Perspective</a>
     </div>
@@ -60,9 +62,12 @@
   </section>
 
   <section id="review" class="shell-card">
-    <div class="section-header">
-      <p class="eyebrow">Interactive practice workspace</p>
-      <h2>Continuous Improvement &amp; Process Gap Review</h2>
+    <div class="section-header ci-review-header">
+      <div>
+        <p class="eyebrow">Interactive practice workspace</p>
+        <h2>Continuous Improvement &amp; Process Gap Review</h2>
+      </div>
+      <button type="button" id="ciNewTop" class="button secondary">Start New Review</button>
     </div>
     <p>This tool uses fictional scenarios to practice a Kaizen-style improvement loop without claiming Lean expertise, real operational authority, or real healthcare outcomes.</p>
 
@@ -72,7 +77,7 @@
           <p class="card-label">Synthetic workflow scenario</p>
           <h3 id="ciTitle">Eligibility exception repeated across cases</h3>
         </div>
-        <div id="ciStateChip" class="ci-chip">TRACE THE GAP</div>
+        <div id="ciStateChip" class="ci-chip">RESOLVE CASE</div>
       </div>
 
       <label>Choose a fictional scenario
@@ -266,12 +271,58 @@
         <div class="ci-actions">
           <button type="submit" class="button primary">Evaluate Improvement Loop</button>
           <button type="button" id="ciSave" class="button secondary">Save Simulated Review</button>
-          <button type="button" id="ciReset" class="button secondary">Reset Scenario</button>
+          <button type="button" id="ciReset" class="button secondary">Reset Current Scenario</button>
         </div>
       </form>
 
-      <div class="ci-progress"><div id="ciProgressBar"></div></div>
+      <div class="ci-control-status">
+        <div>
+          <span class="card-label">Documentation progress</span>
+          <strong id="ciProgressText">0 of 15 controls documented · 0%</strong>
+        </div>
+        <div class="ci-progress" aria-label="Documentation progress">
+          <div id="ciProgressBar"></div>
+        </div>
+      </div>
+
       <div id="ciResult" class="ci-result" aria-live="polite"></div>
+
+      <div class="ci-next-control" aria-live="polite">
+        <span class="card-label">Next control</span>
+        <strong id="ciNextControl">Resolve the individual synthetic case and document what was done.</strong>
+      </div>
+
+      <div class="ci-evidence-summary">
+        <div class="ci-summary-head">
+          <div>
+            <span class="card-label">Recruiter-readable evidence view</span>
+            <h3>Improvement Evidence Summary</h3>
+          </div>
+          <span id="ciSummaryState" class="ci-summary-state">IN PROGRESS</span>
+        </div>
+        <div class="ci-evidence-grid">
+          <div><span>Immediate case resolved?</span><strong id="sumResolved">No</strong></div>
+          <div><span>Recurrence reviewed?</span><strong id="sumRecurrence">No</strong></div>
+          <div><span>Earliest supported gap?</span><strong id="sumGap">Not documented</strong></div>
+          <div><span>Control implemented?</span><strong id="sumImplemented">No</strong></div>
+          <div><span>Pre-change evidence?</span><strong id="sumPre">No</strong></div>
+          <div><span>Post-change evidence?</span><strong id="sumPost">No</strong></div>
+          <div><span>Improvement supported?</span><strong id="sumImprovement">Not yet determined</strong></div>
+          <div><span>Additional review?</span><strong id="sumAdditional">Not determined</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="saved" class="ci-saved-panel">
+      <div class="ci-saved-head">
+        <div>
+          <p class="eyebrow">Browser-saved synthetic work</p>
+          <h3>Review History / Saved Simulation</h3>
+          <p>Saved reviews remain in this browser on this device. They are not uploaded anywhere. Keep all entries synthetic and no-PHI.</p>
+        </div>
+        <button type="button" id="ciNew" class="button secondary">Start New Review</button>
+      </div>
+      <div id="ciSavedReviews" class="ci-saved-list"></div>
     </div>
   </section>
 
@@ -372,14 +423,31 @@ const scenarios={
   }
 };
 
+const FIELD_IDS=[
+  "ciScenario","issueCategory","caseResolutionStatus","immediateResolution","earlierPoint",
+  "similarCases","recurrenceCount","patternClass","supportedGap","gapHypothesis",
+  "smallImprovement","controlOwner","implementationDate","implementationEvidence",
+  "prePattern","postPattern","followUpDate","improvementSupported","additionalReview",
+  "preEvidence","postEvidence","patientEffect","staffEffect"
+];
+
+const STORAGE_HISTORY="sbi-ci-review-history-v3";
+const STORAGE_DRAFT="sbi-ci-draft-v3";
 const q=s=>document.querySelector(s);
 const today=()=>new Date().toISOString().slice(0,10);
 const addDays=n=>{const d=new Date();d.setDate(d.getDate()+n);return d.toISOString().slice(0,10)};
+let lastEvaluation=null;
+let draftTimer=null;
 
-function loadScenario(){
+function setScenarioMeta(){
   const s=scenarios[q("#ciScenario").value];
   q("#ciTitle").textContent=s.title;
   q("#ciScenarioSummary").innerHTML="<strong>"+s.title+"</strong><br>"+s.summary;
+}
+
+function resetScenarioFields(){
+  const s=scenarios[q("#ciScenario").value];
+  setScenarioMeta();
   q("#issueCategory").value=s.category;
   q("#caseResolutionStatus").value="Not resolved";
   q("#immediateResolution").value="";
@@ -402,15 +470,109 @@ function loadScenario(){
   q("#postEvidence").value="";
   q("#patientEffect").value=s.patient;
   q("#staffEffect").value=s.staff;
-  evaluate(false);
+  clearMissing();
+  evaluate(false,false);
+  persistDraft();
 }
 
-function evaluate(scroll=true){
+function captureValues(){
+  const values={};
+  FIELD_IDS.forEach(id=>{
+    const el=q("#"+id);
+    if(el) values[id]=el.value;
+  });
+  return values;
+}
+
+function applyValues(values){
+  if(!values)return;
+  if(values.ciScenario && scenarios[values.ciScenario]) q("#ciScenario").value=values.ciScenario;
+  setScenarioMeta();
+  FIELD_IDS.forEach(id=>{
+    const el=q("#"+id);
+    if(el && values[id]!==undefined && id!=="ciScenario") el.value=values[id];
+  });
+  evaluate(false,false);
+}
+
+function safeParse(raw,fallback){
+  try{return raw?JSON.parse(raw):fallback}catch(e){return fallback}
+}
+
+function getHistory(){
+  return safeParse(localStorage.getItem(STORAGE_HISTORY),[]);
+}
+
+function setHistory(items){
+  localStorage.setItem(STORAGE_HISTORY,JSON.stringify(items.slice(0,8)));
+}
+
+function persistDraft(){
+  const draft={
+    updatedAt:new Date().toISOString(),
+    values:captureValues()
+  };
+  localStorage.setItem(STORAGE_DRAFT,JSON.stringify(draft));
+}
+
+function scheduleDraft(){
+  clearTimeout(draftTimer);
+  draftTimer=setTimeout(persistDraft,180);
+}
+
+function restoreDraft(){
+  const draft=safeParse(localStorage.getItem(STORAGE_DRAFT),null);
+  if(draft && draft.values){
+    applyValues(draft.values);
+    return true;
+  }
+  return false;
+}
+
+function clearMissing(){
+  document.querySelectorAll(".ci-missing").forEach(el=>el.classList.remove("ci-missing"));
+  document.querySelectorAll("[aria-invalid='true']").forEach(el=>el.removeAttribute("aria-invalid"));
+}
+
+function markMissing(ids){
+  clearMissing();
+  ids.forEach(id=>{
+    const el=q("#"+id);
+    if(!el)return;
+    el.setAttribute("aria-invalid","true");
+    const label=el.closest("label");
+    if(label)label.classList.add("ci-missing");
+  });
+}
+
+function evidenceSnapshot(){
+  const resolved=q("#caseResolutionStatus").value==="Resolved in synthetic case" && !!q("#immediateResolution").value.trim();
+  const recurrence=q("#similarCases").value!=="Not reviewed" && q("#patternClass").value!=="Not established";
+  const gap=!!q("#supportedGap").value.trim();
+  const implemented=!!q("#smallImprovement").value.trim() && q("#controlOwner").value!=="Unassigned" && !!q("#implementationEvidence").value.trim();
+  const pre=q("#prePattern").value!=="Not documented" && !!q("#preEvidence").value.trim();
+  const post=q("#postPattern").value!=="Not reviewed yet" && !!q("#postEvidence").value.trim();
+  return {resolved,recurrence,gap,implemented,pre,post};
+}
+
+function updateEvidenceSummary(meta){
+  const s=evidenceSnapshot();
+  q("#sumResolved").textContent=s.resolved?"Yes":"No";
+  q("#sumRecurrence").textContent=s.recurrence?"Yes":"No";
+  q("#sumGap").textContent=s.gap?"Documented":"Not documented";
+  q("#sumImplemented").textContent=s.implemented?"Yes":"No";
+  q("#sumPre").textContent=s.pre?"Yes":"No";
+  q("#sumPost").textContent=s.post?"Yes":"No";
+  q("#sumImprovement").textContent=q("#improvementSupported").value;
+  q("#sumAdditional").textContent=q("#additionalReview").value;
+  q("#ciSummaryState").textContent=meta?meta.chip:"IN PROGRESS";
+}
+
+function evaluate(scroll=true,highlight=true){
   const resolved=q("#caseResolutionStatus").value==="Resolved in synthetic case";
   const immediate=!!q("#immediateResolution").value.trim();
   const earlier=q("#earlierPoint").value!=="Not reviewed";
   const similar=q("#similarCases").value;
-  const recurrence=Number(q("#recurrenceCount").value)||0;
   const pattern=q("#patternClass").value;
   const gap=!!q("#supportedGap").value.trim();
   const hypothesis=!!q("#gapHypothesis").value.trim();
@@ -424,66 +586,181 @@ function evaluate(scroll=true){
   const additional=q("#additionalReview").value!=="Not determined";
 
   const controls=[resolved,immediate,earlier,similar!=="Not reviewed",pattern!=="Not established",gap,hypothesis,improvement,owner,implementation,pre,post,reviewDate,supported!=="Not yet determined",additional];
-  const pct=Math.round(controls.filter(Boolean).length/controls.length*100);
+  const done=controls.filter(Boolean).length;
+  const total=controls.length;
+  const pct=Math.round(done/total*100);
   q("#ciProgressBar").style.width=pct+"%";
+  q("#ciProgressText").textContent=done+" of "+total+" controls documented · "+pct+"%";
 
-  let chip,state,title,body;
-  const recurrenceSignal=similar==="Yes" || recurrence>1 || pattern==="Possible recurring pattern" || pattern==="Repeated synthetic pattern";
-
+  let chip,state,title,body,nextControl,missing=[];
   if(!resolved || !immediate){
     chip="RESOLVE CASE";state="blocked";title="Immediate case resolution is still incomplete";
     body="The process-gap review should not substitute for resolving the individual synthetic case. Document the immediate resolution first.";
+    nextControl="Resolve the individual synthetic case and document what was done.";
+    if(!resolved)missing.push("caseResolutionStatus");
+    if(!immediate)missing.push("immediateResolution");
   }else if(!earlier || similar==="Not reviewed" || pattern==="Not established"){
     chip="TRACE THE GAP";state="review";title="Case resolved — process-gap evidence is not yet established";
     body="Trace the workflow backward and review whether this is isolated, recurring, or still uncertain.";
+    nextControl="Complete the backward trace and recurring-pattern review.";
+    if(!earlier)missing.push("earlierPoint");
+    if(similar==="Not reviewed")missing.push("similarCases");
+    if(pattern==="Not established")missing.push("patternClass");
   }else if(!gap || !hypothesis){
     chip="EVIDENCE BOUNDARY";state="review";title="Pattern reviewed — earliest supported gap or hypothesis is incomplete";
     body="Document the earliest supported gap and keep the process-gap hypothesis separate from what the synthetic evidence actually proves.";
-  }else if(recurrenceSignal && (!improvement || !owner)){
-    chip="DESIGN CONTROL";state="active";title="A recurring signal is visible — a small modeled improvement needs ownership";
+    nextControl="Document the earliest supported gap and the separate process-gap hypothesis.";
+    if(!gap)missing.push("supportedGap");
+    if(!hypothesis)missing.push("gapHypothesis");
+  }else if(!improvement || !owner){
+    chip="DESIGN CONTROL";state="active";title="Gap traced — a small modeled improvement needs clear ownership";
     body="Choose one controllable improvement and assign an owner rather than jumping to a full redesign.";
-  }else if(improvement && !implementation){
+    nextControl="Define one small modeled improvement and assign its control owner.";
+    if(!improvement)missing.push("smallImprovement");
+    if(!owner)missing.push("controlOwner");
+  }else if(!implementation){
     chip="IMPLEMENTATION EVIDENCE";state="active";title="Improvement proposed — implementation is not yet evidenced";
     body="A proposed control is not a process change. Document synthetic evidence that the modeled control was actually implemented.";
+    nextControl="Document evidence that the modeled control was actually implemented.";
+    missing.push("implementationEvidence");
   }else if(!pre){
     chip="BASELINE NEEDED";state="review";title="Control implemented — pre-change evidence is incomplete";
     body="Document the synthetic pre-change pattern so the later review has something meaningful to compare.";
+    nextControl="Document the pre-change pattern and supporting baseline evidence.";
+    if(q("#prePattern").value==="Not documented")missing.push("prePattern");
+    if(!q("#preEvidence").value.trim())missing.push("preEvidence");
   }else if(!post || !reviewDate){
     chip="POST-CHANGE REVIEW";state="active";title="Implementation documented — outcome review is still pending";
     body="Review the post-change pattern on the planned follow-up date before claiming improvement.";
+    nextControl="Complete the post-change review and document the follow-up evidence.";
+    if(q("#postPattern").value==="Not reviewed yet")missing.push("postPattern");
+    if(!q("#postEvidence").value.trim())missing.push("postEvidence");
+    if(!reviewDate)missing.push("followUpDate");
   }else if(supported==="Not yet determined" || !additional){
     chip="INTERPRET RESULT";state="review";title="Pre/post evidence exists — interpretation still needs to be documented";
     body="State whether the synthetic review supports improvement, does not support it, or remains inconclusive, and document whether additional review is needed.";
+    nextControl="Interpret the pre/post evidence and document whether additional review is needed.";
+    if(supported==="Not yet determined")missing.push("improvementSupported");
+    if(!additional)missing.push("additionalReview");
   }else if(supported==="Supported in synthetic review"){
     chip="SUPPORTED IN SIMULATION";state="closed";title="The modeled improvement is supported within this synthetic review";
     body="The review documents case resolution, traceback, recurrence evidence, a small control change, implementation evidence, and post-change comparison. This does not prove real-world healthcare improvement.";
+    nextControl="Review sustainability over time if additional monitoring is appropriate.";
   }else if(supported==="Not supported in synthetic review"){
     chip="REVISE CONTROL";state="active";title="The modeled change did not improve the synthetic pattern";
     body="Keep the process gap open for additional review, revise the modeled control, or gather better evidence rather than declaring success.";
+    nextControl="Revise the modeled control or continue evidence collection before closing the process gap.";
   }else{
     chip="MORE EVIDENCE";state="review";title="The synthetic evidence is inconclusive";
     body="Continue monitoring or revise the review design. An uncertain result should remain uncertain.";
+    nextControl="Continue monitoring or gather stronger post-change evidence.";
   }
 
   q("#ciStateChip").textContent=chip;
+  q("#ciNextControl").textContent=nextControl;
   const result=q("#ciResult");
   result.className="ci-result "+state;
-  result.innerHTML='<p class="card-label">Improvement-loop state · '+pct+'% documented</p><h3>'+title+'</h3><p>'+body+'</p><p><strong>Operational question:</strong> Did the preventive control actually change the recurring pattern?</p>';
+  result.innerHTML='<p class="card-label">Improvement-loop state · '+done+' of '+total+' controls documented</p><h3>'+title+'</h3><p>'+body+'</p><p><strong>Operational question:</strong> Did the preventive control actually change the recurring pattern?</p>';
+  if(highlight)markMissing(missing); else clearMissing();
+
+  lastEvaluation={chip,state,title,body,nextControl,missing,done,total,pct};
+  updateEvidenceSummary(lastEvaluation);
   if(scroll) result.scrollIntoView({behavior:"smooth",block:"center"});
+  return lastEvaluation;
 }
 
-q("#ciScenario").addEventListener("change",loadScenario);
+function saveReview(){
+  const meta=evaluate(false,true);
+  const review={
+    id:"SBI-CI-"+Date.now(),
+    savedAt:new Date().toISOString(),
+    scenario:q("#ciScenario").value,
+    scenarioTitle:scenarios[q("#ciScenario").value].title,
+    issueCategory:q("#issueCategory").value,
+    state:meta.chip,
+    completion:meta.pct,
+    documented:meta.done,
+    total:meta.total,
+    owner:q("#controlOwner").value,
+    improvement:q("#improvementSupported").value,
+    additionalReview:q("#additionalReview").value,
+    values:captureValues()
+  };
+  let history=getHistory();
+  history=[review,...history.filter(item=>item.id!==review.id)];
+  setHistory(history);
+  persistDraft();
+  renderHistory();
+  q("#ciResult").insertAdjacentHTML("beforeend","<p class='ci-save-confirmation'><strong>Saved locally in this browser.</strong> Refreshing this page will preserve the current draft and saved review history on this device.</p>");
+}
+
+function renderHistory(){
+  const history=getHistory();
+  const host=q("#ciSavedReviews");
+  if(!history.length){
+    host.innerHTML='<div class="ci-empty-state"><strong>No saved simulations yet.</strong><span>Complete part of a synthetic review and choose “Save Simulated Review.”</span></div>';
+    return;
+  }
+  host.innerHTML=history.map(item=>{
+    const dt=new Date(item.savedAt);
+    const when=isNaN(dt.getTime())?item.savedAt:dt.toLocaleString();
+    return '<article class="ci-saved-card" data-review-id="'+item.id+'">'+
+      '<div class="ci-saved-meta"><span>'+item.state+'</span><span>'+item.documented+' / '+item.total+' controls</span></div>'+
+      '<h4>'+item.scenarioTitle+'</h4>'+
+      '<p><strong>Issue:</strong> '+item.issueCategory+'</p>'+
+      '<p><strong>Control owner:</strong> '+item.owner+'</p>'+
+      '<p><strong>Improvement conclusion:</strong> '+item.improvement+'</p>'+
+      '<p><strong>Saved:</strong> '+when+'</p>'+
+      '<div class="ci-saved-actions">'+
+        '<button type="button" class="button primary" data-action="resume" data-id="'+item.id+'">Resume Review</button>'+
+        '<button type="button" class="button secondary" data-action="delete" data-id="'+item.id+'">Delete Saved Review</button>'+
+      '</div>'+
+    '</article>';
+  }).join("");
+}
+
+function resumeReview(id){
+  const item=getHistory().find(x=>x.id===id);
+  if(!item)return;
+  applyValues(item.values);
+  persistDraft();
+  q("#review").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function deleteReview(id){
+  if(!window.confirm("Delete this saved synthetic review from this browser?"))return;
+  setHistory(getHistory().filter(x=>x.id!==id));
+  renderHistory();
+}
+
+function startNewReview(){
+  localStorage.removeItem(STORAGE_DRAFT);
+  q("#ciScenario").value="eligibility";
+  resetScenarioFields();
+  q("#review").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+q("#ciScenario").addEventListener("change",()=>resetScenarioFields());
 document.querySelectorAll("#ciForm input,#ciForm select,#ciForm textarea").forEach(el=>{
-  el.addEventListener("change",()=>evaluate(false));
-  el.addEventListener("input",()=>evaluate(false));
+  el.addEventListener("change",()=>{evaluate(false,false);scheduleDraft();});
+  el.addEventListener("input",()=>{evaluate(false,false);scheduleDraft();});
 });
-q("#ciForm").addEventListener("submit",e=>{e.preventDefault();evaluate(true);});
-q("#ciSave").addEventListener("click",()=>{
-  evaluate(false);
-  q("#ciResult").insertAdjacentHTML("beforeend","<p><strong>Simulated review saved in this browser session:</strong> "+q("#issueCategory").value+" · Owner: "+q("#controlOwner").value+" · Improvement status: "+q("#improvementSupported").value+"</p>");
+q("#ciForm").addEventListener("submit",e=>{e.preventDefault();evaluate(true,true);persistDraft();});
+q("#ciSave").addEventListener("click",saveReview);
+q("#ciReset").addEventListener("click",()=>{
+  if(window.confirm("Reset the current synthetic scenario? This will clear the unsaved draft fields for this scenario."))resetScenarioFields();
 });
-q("#ciReset").addEventListener("click",loadScenario);
-loadScenario();
+q("#ciNew").addEventListener("click",startNewReview);
+q("#ciNewTop").addEventListener("click",startNewReview);
+q("#ciSavedReviews").addEventListener("click",e=>{
+  const btn=e.target.closest("button[data-action]");
+  if(!btn)return;
+  if(btn.dataset.action==="resume")resumeReview(btn.dataset.id);
+  if(btn.dataset.action==="delete")deleteReview(btn.dataset.id);
+});
+
+renderHistory();
+if(!restoreDraft())resetScenarioFields();
 </script>
 </body>
 </html>
