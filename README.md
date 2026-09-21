@@ -129,7 +129,63 @@ Through this project, I am practicing:
 - post-payment ownership and closure thinking,
 - synthetic KPI and dashboard design,
 - student-level process-control thinking,
+- continuous-improvement and process-gap review,
+- recurrence review and small-control-change testing,
+- pre-change/post-change evidence comparison,
+- sustainability and post-control verification thinking,
 - and clear separation between simulated evidence and real-world claims.
+
+## Continuous Improvement & Process Gap Review™
+
+SBI now includes a premium interactive continuous-improvement module for practicing the difference between resolving an individual case and strengthening the process that produced it.
+
+Interactive path:
+
+**Visible issue → immediate resolution → backward trace → recurring pattern review → process-gap hypothesis → small control change → owner → implementation evidence → post-change review → recurrence result**
+
+Synthetic fields include:
+
+- Issue Category
+- Immediate Case Resolution Status
+- Immediate Case Resolution
+- Earlier Workflow Point Reviewed
+- Earliest Supported Gap
+- Similar Cases Found?
+- Recurrence Count
+- Pattern Classification
+- Process-Gap Hypothesis
+- Proposed Small Improvement
+- Control Owner
+- Implementation Date
+- Evidence of Implementation
+- Pre-Change Pattern
+- Pre-Change Evidence
+- Post-Change Pattern
+- Post-Change Evidence
+- Patient-Facing Effect
+- Staff Effect
+- Follow-Up Review Date
+- Improvement Supported?
+- Additional Review Needed?
+
+The interactive decision logic can return states such as **Resolve Case**, **Trace the Gap**, **Evidence Boundary**, **Design Control**, **Implementation Evidence**, **Baseline Needed**, **Post-Change Review**, **Interpret Result**, **Supported in Simulation**, **Revise Control**, and **More Evidence**.
+
+Key distinctions:
+
+- **Case closed ≠ process gap closed**
+- **Immediate correction ≠ preventive improvement**
+- **Process change ≠ proven improvement**
+- **Repeated issue ≠ proven systemic cause**
+
+Core question:
+
+> **Did the preventive control actually change the recurring pattern?**
+
+Patient-to-professional insight:
+
+> **The patient needs the individual problem resolved. Healthcare operations also has to determine whether the workflow that created the problem was strengthened.**
+
+This is student-developed continuous-improvement practice. It does not represent Lean/Kaizen certification, quality-improvement employment experience, management authority, or real-world operational outcomes.
 
 ## Payment Recovery / Reconciliation Breakpoint
 
@@ -178,6 +234,8 @@ My goal as a student and emerging healthcare operations professional is to learn
 This repository includes:
 
 - `index.html` — interactive SBI project overview
+- `continuous-improvement-process-gap-review.html` — interactive Continuous Improvement & Process Gap Review™
+- `kp-logo.svg` — Kori Pickle KP brand mark
 - `style.css` — project styling
 - `templates/breakpoint-log.csv` — fictional breakpoint log using cautious, hypothesis-based language
 - `templates/root-cause-library.csv` — possible contributing conditions, potential effects, student practice controls, and example measures
