@@ -187,6 +187,26 @@ Patient-to-professional insight:
 
 This is student-developed continuous-improvement practice. It does not represent Lean/Kaizen certification, quality-improvement employment experience, management authority, or real-world operational outcomes.
 
+### Production-Quality Interactive Controls
+
+The Continuous Improvement & Process Gap Review™ now includes:
+
+- explicit **Newsreader** editorial typography and **Inter** interface/body typography,
+- real browser persistence using `localStorage`,
+- automatic draft restoration after refresh on the same browser/device,
+- a Saved Review / Review History panel,
+- Resume Review, Start New Review, and Delete Saved Review actions,
+- progress shown as both percentage and **controls documented out of 15**,
+- stage-specific missing-field highlighting after evaluation,
+- a visible **Next Control** instruction,
+- an **Improvement Evidence Summary** for recruiter-readable review,
+- mobile-first button, form, spacing, and overflow improvements,
+- and a strict white / black / Tennessee Orange (#FF8200) brand treatment.
+
+Saved simulations remain in the user's browser on that device and are not uploaded by SBI. The project continues to require synthetic, no-PHI entries.
+
+The interactive logic is designed to allow different evidence-based outcomes, including **Supported in Simulation**, **Revise Control**, and **More Evidence**. The tool does not force every modeled change to appear successful.
+
 ## Payment Recovery / Reconciliation Breakpoint
 
 SBI now includes a simulated financial-workflow breakpoint example for situations where a later payment is reduced, reversed, adjusted, or linked to earlier recovery activity.
