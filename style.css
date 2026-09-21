@@ -717,3 +717,76 @@ footer p {
     min-height: auto;
   }
 }
+
+/* Continuous Improvement & Process Gap Review™ */
+.brand-logo{width:58px;height:58px;object-fit:contain;flex:0 0 58px}
+.continuous-improvement-page{background:#FFFFFF;color:#000000}
+.continuous-improvement-page main{width:min(1180px,94vw)}
+.continuous-improvement-page .shell-card{border:1px solid #000000;box-shadow:none;background:#FFFFFF}
+.continuous-improvement-page .shell-card:before{background:#FF8200;opacity:1}
+.continuous-improvement-page h1,.continuous-improvement-page h2,.continuous-improvement-page h3,
+.ci-signature-name{font-family:"Newsreader",Georgia,"Times New Roman",serif;color:#000000}
+.continuous-improvement-page h1,.continuous-improvement-page h2{font-weight:600;letter-spacing:-.035em}
+.continuous-improvement-page .subtitle,.continuous-improvement-page p,.continuous-improvement-page label{color:#000000}
+.continuous-improvement-page .tagline{background:#FFFFFF;border:1px solid #000000;border-left:6px solid #FF8200;border-radius:0}
+.continuous-improvement-page .button{border-radius:0}
+.continuous-improvement-page .primary{background:#FF8200;color:#000000;box-shadow:none}
+.continuous-improvement-page .secondary{background:#FFFFFF;color:#000000;border:1px solid #000000}
+.ci-brandbar{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:30px;padding-bottom:30px}
+.ci-brand-lockup{display:flex;align-items:center;gap:16px}
+.ci-brand-lockup img{width:70px;height:70px;object-fit:contain}
+.ci-brand-lockup strong{display:block;font-family:"Newsreader",Georgia,serif;font-size:1.35rem}
+.ci-nav{display:flex;flex-wrap:wrap;gap:14px}
+.ci-nav a{color:#000000;text-decoration:none;border-bottom:2px solid #FF8200;font-weight:800}
+.ci-hero h1{max-width:980px}
+.ci-rail{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:8px;margin:28px 0}
+.ci-rail>div{border:1px solid #000000;padding:14px 9px;min-height:105px;background:#FFFFFF}
+.ci-rail span{display:block;color:#FF8200;font-family:"Newsreader",Georgia,serif;font-size:1.55rem;line-height:1;margin-bottom:8px}
+.ci-rail strong{display:block;font-size:.7rem;line-height:1.24;text-transform:uppercase;letter-spacing:.045em}
+.ci-distinction-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:22px}
+.ci-distinction-grid>div{border:1px solid #000000;padding:18px;background:#FFFFFF;border-bottom:4px solid #FF8200}
+.ci-distinction-grid strong,.ci-distinction-grid span{display:block}
+.ci-distinction-grid strong{font-family:"Newsreader",Georgia,serif;font-size:1.45rem}
+.ci-workbench{border:2px solid #000000;padding:clamp(20px,4vw,36px);box-shadow:10px 10px 0 #FF8200;margin-top:24px}
+.ci-workbench-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;border-bottom:1px solid #000000;padding-bottom:18px;margin-bottom:20px}
+.ci-workbench-head h3{font-size:clamp(1.8rem,4vw,3rem);margin-top:6px}
+.ci-chip{border:1px solid #FF8200;padding:8px 12px;font-size:.72rem;font-weight:900;letter-spacing:.1em;white-space:nowrap}
+.ci-summary{border-left:6px solid #FF8200;border-top:1px solid #000000;border-right:1px solid #000000;border-bottom:1px solid #000000;padding:18px;margin:14px 0 20px;background:#FFFFFF}
+.ci-form-section{border-top:1px solid #000000;padding:24px 0}
+.ci-form-section:first-of-type{border-top:0}
+.ci-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:12px 0}
+.ci-workbench label{display:block;font-weight:800;margin:10px 0}
+.ci-workbench select,.ci-workbench input,.ci-workbench textarea{width:100%;box-sizing:border-box;margin-top:7px;padding:11px 12px;border:1px solid #000000;background:#FFFFFF;color:#000000;font:inherit;font-size:16px}
+.ci-workbench select,.ci-workbench input{min-height:48px}
+.ci-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.ci-progress{height:12px;border:1px solid #000000;margin:24px 0;background:#FFFFFF;overflow:hidden}
+#ciProgressBar{height:100%;width:0;background:#FF8200;transition:width .2s ease}
+.ci-result{border:1px solid #000000;border-left:6px solid #FF8200;padding:22px;background:#FFFFFF}
+.ci-result h3{font-size:clamp(1.7rem,4vw,2.5rem);margin:8px 0}
+.ci-result.closed{border:2px solid #FF8200}
+.ci-result.blocked{border-left-color:#000000}
+.ci-decision-grid,.ci-skill-grid,.ci-launch-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:22px}
+.ci-decision-grid article,.ci-skill-grid>div,.ci-launch-grid article{border:1px solid #000000;padding:22px;background:#FFFFFF;border-bottom:4px solid #FF8200}
+.ci-decision-grid h3{font-size:1.6rem;margin:6px 0 10px}
+.ci-skill-grid strong,.ci-skill-grid span{display:block}
+.ci-skill-grid strong{font-family:"Newsreader",Georgia,serif;font-size:1.5rem;margin-bottom:8px}
+.ci-quote-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:22px 0}
+.ci-quote-grid blockquote{margin:0;border:1px solid #000000;padding:20px;font-family:"Newsreader",Georgia,serif;font-size:1.35rem}
+.ci-insight{font-family:"Newsreader",Georgia,serif;font-size:clamp(1.8rem,4vw,3.1rem);font-weight:600;line-height:1.08;border-left:6px solid #FF8200;padding-left:20px}
+.ci-boundary{border:1px solid #000000;border-left:6px solid #FF8200;padding:20px;margin-top:24px}
+.ci-signature,.ci-signature-index{display:flex;gap:22px;align-items:center}
+.ci-signature img,.ci-signature-index img{width:92px;height:92px;object-fit:contain}
+.ci-signature-name{display:block;font-size:clamp(2rem,5vw,4rem);font-style:italic;line-height:1}
+.ci-signature-rule{width:180px;height:3px;background:#FF8200;margin:10px 0 12px}
+.ci-signature p,.ci-signature-index p{margin:4px 0}
+@media(max-width:1050px){.ci-rail{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media(max-width:860px){
+  .brand-logo{width:50px;height:50px;flex-basis:50px}
+  .ci-brandbar,.ci-workbench-head,.ci-signature,.ci-signature-index{display:block}
+  .ci-brand-lockup img{width:60px;height:60px}
+  .ci-nav{margin-top:18px}
+  .ci-rail{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ci-distinction-grid,.ci-form-grid,.ci-decision-grid,.ci-skill-grid,.ci-launch-grid,.ci-quote-grid{grid-template-columns:1fr}
+  .ci-chip{display:inline-block;margin-top:14px}
+  .ci-signature img,.ci-signature-index img{margin-bottom:16px}
+}
