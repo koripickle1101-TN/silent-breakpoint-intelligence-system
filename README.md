@@ -303,3 +303,28 @@ I want SBI to show how I am learning to trace administrative workflow problems u
 - [GitHub profile](https://github.com/koripickle1101-TN)
 
 Created by Kori Pickle. Student-developed portfolio project. Synthetic data only. No PHI.
+
+
+## Patient Experience Signal → Process Gap Review
+
+The existing Continuous Improvement & Process Gap Review™ includes one focused synthetic patient-experience scenario, **PX-001 — Repeated Appointment Waiting Complaints**. This is intentionally an extension of SBI rather than a separate complaint-management project.
+
+PX-001 practices translating repeated patient-experience signals into structured operational investigation:
+
+**Repeated signal → detection point → backward trace → evidence boundary → earliest supported gap → hypothesis → owner/control → baseline → post-change review → recurrence result**
+
+The scenario reinforces:
+
+- **Signal ≠ root cause**
+- **Detection point ≠ origin point**
+- **Recurrence ≠ proof of systemic cause**
+- **Complaint closed ≠ process gap closed**
+- **Process change ≠ proven improvement**
+
+Career insight:
+
+> **Patient experience can reveal where to investigate without proving why the experience occurred.**
+
+The fictional complaints support a waiting/communication pattern but do not establish staffing, scheduling, registration, capacity, technology, or another cause. The learner must document evidence before drawing a root-cause conclusion.
+
+This remains student-developed, simulated, synthetic, no-PHI portfolio practice and does not represent complaint-management employment experience, quality-improvement authority, management authority, or real patient outcomes.
