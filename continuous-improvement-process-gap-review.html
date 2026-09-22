@@ -87,6 +87,7 @@
           <option value="claim">Repeated corrected-claim pattern</option>
           <option value="handoff">Repeated ownership / handoff gap</option>
           <option value="payment">Repeated payment-reconciliation exception</option>
+          <option value="patientExperience">PX-001 · Repeated appointment waiting complaints</option>
         </select>
       </label>
       <div id="ciScenarioSummary" class="ci-summary"></div>
@@ -103,6 +104,7 @@
                 <option>Handoff / ownership</option>
                 <option>Payment / reconciliation</option>
                 <option>Documentation / data integrity</option>
+                <option>Patient experience / access</option>
                 <option>Other administrative workflow</option>
               </select>
             </label>
@@ -133,6 +135,9 @@
                 <option>Claim preparation / submission</option>
                 <option>Payer acknowledgement / follow-up</option>
                 <option>Payment / reconciliation</option>
+                <option>Patient complaint / experience channel</option>
+                <option>Scheduling / pre-visit readiness</option>
+                <option>Arrival / registration / service handoff</option>
               </select>
             </label>
             <label>Similar Cases Found?
@@ -252,6 +257,7 @@
                 <option>Billing confusion</option>
                 <option>Coverage / authorization uncertainty</option>
                 <option>Repeated information request</option>
+                <option>Waiting / communication uncertainty</option>
                 <option>No modeled patient-facing effect identified</option>
               </select>
             </label>
@@ -311,6 +317,19 @@
           <div><span>Additional review?</span><strong id="sumAdditional">Not determined</strong></div>
         </div>
       </div>
+    </div>
+
+
+    <div class="ci-px-proof">
+      <p class="card-label">Patient-experience signal discipline</p>
+      <h3>Patient experience can reveal where to investigate without proving why the experience occurred.</h3>
+      <div class="ci-distinction-grid">
+        <div><strong>Signal</strong><span>≠ root cause</span></div>
+        <div><strong>Detection point</strong><span>≠ origin point</span></div>
+        <div><strong>Recurrence</strong><span>≠ proof of systemic cause</span></div>
+        <div><strong>Complaint closed</strong><span>≠ process gap closed</span></div>
+      </div>
+      <p class="ci-insight">For PX-001, repeated waiting and communication complaints support investigation. They do not establish staffing, scheduling, registration, capacity, technology, or another cause without additional evidence.</p>
     </div>
 
     <div id="saved" class="ci-saved-panel">
