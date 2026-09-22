@@ -1106,3 +1106,8 @@ footer p {
     grid-template-columns:1fr 1fr;
   }
 }
+
+/* Patient Experience Signal → Process Gap Review */
+.ci-px-proof{margin:28px 0;padding:26px;border:2px solid #000000;border-left:7px solid #FF8200;background:#FFFFFF}
+.ci-px-proof h3{font-family:"Newsreader",Georgia,serif;font-size:clamp(1.65rem,3vw,2.35rem);line-height:1.05;margin:8px 0 18px}
+.ci-px-proof .ci-insight{margin-top:18px;border-top:1px solid #000000;padding-top:16px;font-weight:700}
