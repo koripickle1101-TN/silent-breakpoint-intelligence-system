@@ -62,6 +62,34 @@ Operational Reporting / Visibility
 
 This is a learning model, not a universal healthcare workflow. Actual workflows vary by organization, service, payer, technology, policy, and role.
 
+## Upstream Requirement Intelligence
+
+SBI now includes a requirement-to-breakpoint layer for cases where evidence shows that an external or organizational requirement shaped the workflow.
+
+The analytical path is:
+
+**Supported requirement → operational requirement → workflow / role / system → control point → exception / breakpoint → patient, staff, or revenue signal → measure → analyze → adjust**
+
+This strengthens SBI's backward-trace model by asking not only where control may have weakened, but—when supported—what requirement first became operational and where the workflow was expected to respond to it.
+
+SBI distinguishes among policy or regulation, payer rules, contractual requirements, coverage conditions, documentation or authorization requirements, and internal organizational procedures. It does **not** assume that every breakpoint has a policy root cause.
+
+Key evidence boundary:
+
+> **A denial, delay, complaint, rework pattern, or workflow exception is a signal for investigation—not proof of a policy, payer-rule, contractual, regulatory, or organizational cause.**
+
+The student review sequence is:
+
+1. **Identify** the requirement and source only when evidence supports the connection.
+2. **Translate** the requirement into its operational consequence: workflow, role, queue, technology, documentation, communication, timing, oversight, or measurement.
+3. **Trace** the workflow to the first control point where the requirement should have been detected, completed, handed off, escalated, or verified.
+4. **Separate** the upstream requirement, workflow failure, visible signal, and downstream effect.
+5. **Measure** the relevant simulated process pattern.
+6. **Analyze** why the result occurred and where the earliest supported loss of control appears.
+7. **Adjust** the modeled control, workflow, escalation, communication, or monitoring rule and review the resulting evidence.
+
+This remains student-developed, simulated, no-PHI healthcare operations practice and does not represent policy, legal, compliance, payer, coding, clinical, or management authority.
+
 ## Current 2026 Context
 
 SBI is intentionally not a payer-rule engine or a compliance tool. Prior-authorization requirements and electronic data-exchange expectations continue to change.
