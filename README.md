@@ -1,5 +1,28 @@
 # SBI — Silent Breakpoint Intelligence™
 
+## Recruiter Review — 30-Second Snapshot
+
+**Project type:** Student-developed, simulated, educational, no-PHI; not professional healthcare employment.
+
+- **Operational problem:** The first workflow failure may occur before the point where an exception becomes visible.
+- **Student approach:** I modeled cross-workflow breakpoint detection and priority review using educational criteria.
+- **Inspect the evidence:** Synthetic breakpoint scenarios, student-defined scoring, and cross-workflow review artifacts documented below.
+- **Entry-level skills illustrated:** Process mapping, issue classification, handoff analysis, and documentation of suspected control gaps.
+- **Assumptions and limitations:** Scores and severity bands are student-designed; they are not validated clinical, payer, or operational risk measures.
+
+### Simple Workflow and Handoff View
+
+```text
+Detect downstream signal → Trace upstream steps → Identify suspected gap → Assign review → Document evidence → Reassess.
+```
+
+**Control question:** Where did the workflow first lose control? Each stage is a hypothetical administrative review step, not a clinical, payer, or compliance authorization.
+
+**Privacy and equity considerations:** All examples are fictional. In actual work, patient identifiers and coverage details require approved access and minimum-necessary handling. Language access, disability accommodations, and timely patient communication may affect safe administrative follow-up; this project does not measure those outcomes.
+
+---
+
+
 I built SBI as a **student-developed, simulated, no-PHI healthcare operations portfolio project** around a question I keep coming back to:
 
 > **Where did the workflow first lose control?**
